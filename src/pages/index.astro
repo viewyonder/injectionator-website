@@ -1,16 +1,73 @@
 ---
-
+// No server-side JavaScript needed for this simple page.
 ---
-
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Injectionator - LLM Application Security</title>
+    <style>
+        :root {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f0f2f5;
+            color: #1c1e21;
+        }
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        main {
+            max-width: 900px;
+            padding: 2rem;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #0c4a6e; /* A deep blue color */
+        }
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+        footer {
+            margin-top: auto;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        a {
+            color: #0c4a6e;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Injectionator (P7)</h1>
+        <p>
+            An advanced security framework for Large Language Model (LLM) applications. Injectionator uses a chained, modular architecture with Inlets, Outlets, and a core processing chain (Shield, Sword, Evaluator) to process prompt injection and other emerging threats.
+        </p>
+        <img 
+            src="/images/injectionator-p7-architecture-oct-25.png" 
+            alt="Architecture diagram of the Injectionator P7 system" 
+        />
+    </main>
+    <footer>
+        <p>Find out more @ <a href="https://injectionator.com">https://injectionator.com</a></p>
+    </footer>
+</body>
 </html>
