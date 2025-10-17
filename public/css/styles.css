@@ -1,60 +1,139 @@
 :root {
-  /* Light mode defaults */
-  --bg: oklch(95% 0.02 40); /* --neutral-100 */
-  --bg-elevated: oklch(98% 0.01 40); /* Slightly brighter for cards */
-  --text: oklch(15% 0.02 40); /* --neutral-900 */
-  --text-muted: oklch(35% 0.02 40); /* --neutral-700 */
-  --border: oklch(75% 0.02 40); /* --neutral-300, blends in light */
-  --border-muted: oklch(55% 0.02 40); /* --neutral-500 */
-  --highlight: oklch(100% 0.01 40); /* Bright top border */
-  --primary: oklch(79.4% 0.095 195);
-  --success: oklch(52.1% 0.117 144);
-  --warning: oklch(92.7% 0.195 103);
-  --info: oklch(80% 0.1 220);
-  --danger: oklch(68.1% 0.121 31);
+    /* Core font and layout (kept from your original) */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-  /* 3D Effects */
-  --bg-gradient: linear-gradient(to bottom, var(--bg-elevated), var(--bg)); /* Subtle shine */
-  --border-gradient: linear-gradient(to bottom, var(--highlight), var(--border)); /* Light from above */
-  --shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); /* Mixed short/long for realism */
+    /* Light mode defaults (neutrals adapted from your light gray bg and dark text) */
+    --bg: oklch(95% 0.02 40); /* --neutral-100, subtle warm tint */
+    --bg-elevated: oklch(98% 0.01 40); /* For 3D shine on surfaces */
+    --text: oklch(15% 0.02 40); /* --neutral-900 */
+    --text-muted: oklch(35% 0.02 40); /* --neutral-700, for footer */
+    --border: oklch(75% 0.02 40); /* --neutral-300, blends in light */
+    --border-muted: oklch(55% 0.02 40); /* --neutral-500 */
+    --highlight: oklch(100% 0.01 40); /* Bright top border for 3D */
+    --primary: oklch(79.4% 0.095 195); /* Teal for h1, links */
+    --primary-100: oklch(95% 0.095 195); /* Light accents */
+    --primary-300: oklch(85% 0.095 195); /* Hover */
+    --primary-700: oklch(60% 0.095 195); /* Darker variants */
+    --primary-900: oklch(40% 0.095 195); /* Deep accents */
+
+    /* 3D Effects */
+    --bg-gradient: linear-gradient(to bottom, var(--bg-elevated), var(--bg)); /* Subtle shine */
+    --border-gradient: linear-gradient(to bottom, var(--highlight), var(--border)); /* Light from above */
+    --shadow: 0 1px 3px oklch(0% 0 0 / 0.12), 0 1px 2px oklch(0% 0 0 / 0.24); /* Mixed for realism (OKLCH alpha) */
+
+    /* Apply defaults */
+    background: var(--bg-gradient); /* Body gradient for 'object on top' feel */
+    color: var(--text);
 }
 
 /* Dark mode flip */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: oklch(15% 0.02 40); /* Flip to --neutral-900 */
-    --bg-elevated: oklch(20% 0.02 40); /* Slightly lighter for cards */
-    --text: oklch(95% 0.02 40); /* Flip to --neutral-100 */
-    --text-muted: oklch(75% 0.02 40); /* Flip to --neutral-300 */
-    --border: oklch(35% 0.02 40); /* Flip to --neutral-700 */
-    --border-muted: oklch(55% 0.02 40); /* Consistent medium */
-    --highlight: oklch(30% 0.02 40); /* Dimmer highlight for dark */
-    --bg-gradient: linear-gradient(to bottom, var(--highlight), var(--bg)); /* Glow effect */
-    --border-gradient: linear-gradient(to bottom, var(--highlight), var(--border-muted));
-    --shadow: 0 1px 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.3); /* Deeper in dark */
-  }
+    :root {
+        --bg: oklch(15% 0.02 40); /* Flip to --neutral-900 */
+        --bg-elevated: oklch(20% 0.02 40); /* Slightly lighter for cards */
+        --text: oklch(95% 0.02 40); /* Flip to --neutral-100 */
+        --text-muted: oklch(75% 0.02 40); /* Flip to --neutral-300 */
+        --border: oklch(35% 0.02 40); /* Flip to --neutral-700 */
+        --border-muted: oklch(55% 0.02 40); /* Consistent medium */
+        --highlight: oklch(30% 0.02 40); /* Dimmer highlight for dark */
+        --bg-gradient: linear-gradient(to bottom, var(--highlight), var(--bg)); /* Glow effect */
+        --border-gradient: linear-gradient(to bottom, var(--highlight), var(--border-muted));
+        --shadow: 0 1px 3px oklch(0% 0 0 / 0.5), 0 1px 2px oklch(0% 0 0 / 0.3); /* Deeper in dark */
+    }
 }
 
-/* Example Usage: A card with 3D effect */
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+main {
+    max-width: 900px;
+    padding: 2rem;
+    text-align: center;
+    background: var(--bg-gradient); /* 3D elevated effect */
+    border: 1px solid transparent;
+    border-image: var(--border-gradient) 1; /* Gradient border for shine */
+    border-radius: 1rem; /* Round edges for boxed 'object' look */
+    box-shadow: var(--shadow); /* Depth */
+    margin: 2rem; /* Spacing from edges */
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: var(--primary-700); /* Darker primary for card titles */
+    margin-bottom: 0.5rem;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+img {
+    max-width: 100%;
+    max-height: 60vh; /* Fix oversized image */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow); /* Enhanced from your original */
+    margin-top: 2rem;
+    margin-bottom: 2rem; /* Space before cards */
+}
+
+.cards {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap; /* Stack on mobile */
+}
+
 .card {
-  background: var(--bg-gradient);
-  border: 1px solid transparent;
-  border-image: var(--border-gradient) 1;
-  box-shadow: var(--shadow);
-  color: var(--text);
-  padding: 1rem;
-  border-radius: 0.5rem;
+    flex: 1;
+    min-width: 250px;
+    max-width: 400px;
+    padding: 1rem;
+    background: var(--bg-gradient);
+    border: 1px solid transparent;
+    border-image: var(--border-gradient) 1;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
-  --bg-gradient: linear-gradient(to bottom, var(--highlight), var(--bg)); /* Reveal full gradient */
+    --bg-gradient: linear-gradient(to bottom, var(--highlight), var(--bg)); /* Reveal more shine on hover */
+    transform: translateY(-2px); /* Subtle lift */
+    box-shadow: 0 4px 8px oklch(0% 0 0 / 0.2); /* Deeper shadow */
 }
 
 .muted-text {
-  color: var(--text-muted);
+    color: var(--text-muted);
+    font-size: 1rem;
 }
 
-.primary-button {
-  background: var(--primary);
-  color: var(--bg); /* High contrast */
+footer {
+    margin-top: auto;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--primary-300); /* Brighter hover for interaction */
+    text-decoration: underline;
 }
