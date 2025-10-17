@@ -1,0 +1,60 @@
+:root {
+  /* Light mode defaults */
+  --bg: oklch(95% 0.02 40); /* --neutral-100 */
+  --bg-elevated: oklch(98% 0.01 40); /* Slightly brighter for cards */
+  --text: oklch(15% 0.02 40); /* --neutral-900 */
+  --text-muted: oklch(35% 0.02 40); /* --neutral-700 */
+  --border: oklch(75% 0.02 40); /* --neutral-300, blends in light */
+  --border-muted: oklch(55% 0.02 40); /* --neutral-500 */
+  --highlight: oklch(100% 0.01 40); /* Bright top border */
+  --primary: oklch(79.4% 0.095 195);
+  --success: oklch(52.1% 0.117 144);
+  --warning: oklch(92.7% 0.195 103);
+  --info: oklch(80% 0.1 220);
+  --danger: oklch(68.1% 0.121 31);
+
+  /* 3D Effects */
+  --bg-gradient: linear-gradient(to bottom, var(--bg-elevated), var(--bg)); /* Subtle shine */
+  --border-gradient: linear-gradient(to bottom, var(--highlight), var(--border)); /* Light from above */
+  --shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); /* Mixed short/long for realism */
+}
+
+/* Dark mode flip */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: oklch(15% 0.02 40); /* Flip to --neutral-900 */
+    --bg-elevated: oklch(20% 0.02 40); /* Slightly lighter for cards */
+    --text: oklch(95% 0.02 40); /* Flip to --neutral-100 */
+    --text-muted: oklch(75% 0.02 40); /* Flip to --neutral-300 */
+    --border: oklch(35% 0.02 40); /* Flip to --neutral-700 */
+    --border-muted: oklch(55% 0.02 40); /* Consistent medium */
+    --highlight: oklch(30% 0.02 40); /* Dimmer highlight for dark */
+    --bg-gradient: linear-gradient(to bottom, var(--highlight), var(--bg)); /* Glow effect */
+    --border-gradient: linear-gradient(to bottom, var(--highlight), var(--border-muted));
+    --shadow: 0 1px 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.3); /* Deeper in dark */
+  }
+}
+
+/* Example Usage: A card with 3D effect */
+.card {
+  background: var(--bg-gradient);
+  border: 1px solid transparent;
+  border-image: var(--border-gradient) 1;
+  box-shadow: var(--shadow);
+  color: var(--text);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.card:hover {
+  --bg-gradient: linear-gradient(to bottom, var(--highlight), var(--bg)); /* Reveal full gradient */
+}
+
+.muted-text {
+  color: var(--text-muted);
+}
+
+.primary-button {
+  background: var(--primary);
+  color: var(--bg); /* High contrast */
+}
